@@ -1,0 +1,17 @@
+{
+  "generator-plugin-wp": {
+    "name": "SED Features",
+    "homepage": "http://webdevstudios.com",
+    "description": "Houses custom post types and other custom features.",
+    "version": "0.1.0",
+    "author": "Jordan Kicklighter",
+    "authoremail": "jwkicklighter@gmail.com",
+    "authorurl": "http://webdevstudios.com",
+    "license": "Copyright 2015 Jordan Kicklighter",
+    "slug": "sed-features",
+    "classname": "SED_Features",
+    "classprefix": "SEDF_",
+    "prefix": "sed_features",
+    "year": 2015
+  }
+}

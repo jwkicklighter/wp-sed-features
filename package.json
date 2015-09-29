@@ -1,0 +1,17 @@
+{
+	"name": "sed-features",
+	"title": "SED Features",
+	"version": "0.1.0",
+	"description": "Houses custom post types and other custom features.",
+	"author": {
+		"name": "Jordan Kicklighter",
+		"url": "http://webdevstudios.com"
+	},
+	"license": "Copyright 2015 Jordan Kicklighter",
+	"devDependencies": {
+	    "grunt": "latest",
+	    "grunt-contrib-watch": "latest",
+	    "grunt-wp-i18n": "latest",
+	    "load-grunt-tasks": "latest"
+	}
+}

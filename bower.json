@@ -1,0 +1,18 @@
+{
+  "name": "sed-features",
+  "description": "Houses custom post types and other custom features.",
+  "license": "Copyright 2015 Jordan Kicklighter",
+  "authors": [
+    "Jordan Kicklighter"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}
