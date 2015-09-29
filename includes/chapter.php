@@ -151,4 +151,22 @@ class SEDF_Chapter extends CPT_Core {
 				break;
 		}
 	}
+
+}
+
+// Helper function to get all chapters for big brother list
+function all_chapters( $field ) {
+	$args = array(
+    'post_type'   => 'sedf-chapter'
+  );
+	$posts = get_posts( $args );
+	$post_options = array();
+  if ( $posts ) {
+    foreach ( $posts as $post ) {
+			if ($field->object_id != $post->ID)
+      	$post_options[ $post->ID ] = get_post_meta( $post->ID, 'chapter_designation', true );
+    }
+  }
+
+  return $post_options;
 }
