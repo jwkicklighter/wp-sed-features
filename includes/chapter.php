@@ -33,7 +33,7 @@ class SEDF_Chapter extends CPT_Core {
 		// First parameter should be an array with Singular, Plural, and Registered name
 		parent::__construct(
 			array( __( 'Chapter', 'sed-features' ), __( 'Chapters', 'sed-features' ), 'sedf-chapter' ),
-			array( 'supports' => array( 'title', 'editor', 'excerpt', 'thumbnail' ), )
+			array( 'supports' => array(null), )
 		);
 	}
 
@@ -58,11 +58,63 @@ class SEDF_Chapter extends CPT_Core {
 
 		$box = new_cmb2_box( array(
 			'id'            => $prefix . 'metabox',
-			'title'         => __( 'SED Features Chapter Meta Box', 'sed-features' ),
+			'title'         => __( 'Chapter Information', 'sed-features' ),
 			'object_types'  => array( 'sedf-chapter', ),
 			'context'       => 'normal',
 			'priority'      => 'high',
 			'show_names'    => true, // Show field names on the left
+		) );
+
+		$box->add_field( array(
+	    'name'    => 'Greek Designation',
+	    'desc'    => 'should be spelled out (i.e. Alpha, not A)',
+	    'id'      => 'chapter_designation',
+	    'type'    => 'text_medium',
+		) );
+
+		$box->add_field( array(
+	    'name'    => 'Charter Date',
+	    'id'      => 'chapter_charter1',
+	    'type'    => 'text_date_timestamp',
+		) );
+
+		$box->add_field( array(
+	    'name'    => 'Recharter Date 1',
+	    'id'      => 'chapter_charter2',
+			'type'    => 'text_date_timestamp',
+		) );
+
+		$box->add_field( array(
+	    'name'    => 'Recharter Date 2',
+	    'id'      => 'chapter_charter3',
+			'type'    => 'text_date_timestamp',
+		) );
+
+		$box->add_field( array(
+	    'name'    => 'School Name',
+	    'id'      => 'chapter_school',
+	    'type'    => 'text_medium',
+		) );
+
+		$box->add_field( array(
+	    'name'    => 'Address',
+	    'id'      => 'chapter_address',
+	    'type'    => 'text_medium',
+		) );
+
+		$box->add_field( array(
+	    'name'    => 'Chapter Website',
+	    'id'      => 'chapter_url',
+	    'type'    => 'text_medium',
+		) );
+
+		$box->add_field( array(
+	    'name'             => 'Big Brother',
+	    'id'               => 'chapter_big_brother',
+	    'type'             => 'select',
+	    'show_option_none' => true,
+	    'default'          => 'custom',
+	    'options'          => 'all_chapters',
 		) );
 	}
 
@@ -74,7 +126,10 @@ class SEDF_Chapter extends CPT_Core {
 	 * @return array           Modified array
 	 */
 	public function columns( $columns ) {
+		$columns = array();
 		$new_column = array(
+			'chapter' => sprintf( __( '%s' ), $this->post_type( 'singular' ) ),
+			'school' => 'School',
 		);
 		return array_merge( $new_column, $columns );
 	}
@@ -87,6 +142,31 @@ class SEDF_Chapter extends CPT_Core {
 	 */
 	public function columns_display( $column, $post_id ) {
 		switch ( $column ) {
+			case 'chapter':
+				echo sprintf( '<a href="%s">%s</a>', get_edit_post_link($post_id), get_post_meta( $post_id, 'chapter_designation', true ) );
+				break;
+
+			case 'school':
+				echo get_post_meta( $post_id, 'chapter_school', true );
+				break;
 		}
 	}
+
+}
+
+// Helper function to get all chapters for big brother list
+function all_chapters( $field ) {
+	$args = array(
+    'post_type'   => 'sedf-chapter'
+  );
+	$posts = get_posts( $args );
+	$post_options = array();
+  if ( $posts ) {
+    foreach ( $posts as $post ) {
+			if ($field->object_id != $post->ID)
+      	$post_options[ $post->ID ] = get_post_meta( $post->ID, 'chapter_designation', true );
+    }
+  }
+
+  return $post_options;
 }
