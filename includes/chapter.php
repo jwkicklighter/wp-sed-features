@@ -126,7 +126,10 @@ class SEDF_Chapter extends CPT_Core {
 	 * @return array           Modified array
 	 */
 	public function columns( $columns ) {
+		$columns = array();
 		$new_column = array(
+			'chapter' => sprintf( __( '%s' ), $this->post_type( 'singular' ) ),
+			'school' => 'School',
 		);
 		return array_merge( $new_column, $columns );
 	}
@@ -139,6 +142,13 @@ class SEDF_Chapter extends CPT_Core {
 	 */
 	public function columns_display( $column, $post_id ) {
 		switch ( $column ) {
+			case 'chapter':
+				echo sprintf( '<a href="%s">%s</a>', get_edit_post_link($post_id), get_post_meta( $post_id, 'chapter_designation', true ) );
+				break;
+
+			case 'school':
+				echo get_post_meta( $post_id, 'chapter_school', true );
+				break;
 		}
 	}
 }
