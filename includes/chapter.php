@@ -32,7 +32,7 @@ class SEDF_Chapter extends CPT_Core {
 		// Register this cpt
 		// First parameter should be an array with Singular, Plural, and Registered name
 		parent::__construct(
-			array( __( 'Chapter', 'sed-features' ), __( 'Chapters', 'sed-features' ), 'sedf-chapter' ),
+			array( __( 'Chapter', 'sed-features' ), __( 'Chapters', 'sed-features' ), 'chapters' ),
 			array( 'supports' => array(null), )
 		);
 	}
@@ -59,7 +59,7 @@ class SEDF_Chapter extends CPT_Core {
 		$box = new_cmb2_box( array(
 			'id'            => $prefix . 'metabox',
 			'title'         => __( 'Chapter Information', 'sed-features' ),
-			'object_types'  => array( 'sedf-chapter', ),
+			'object_types'  => array( 'chapters', ),
 			'context'       => 'normal',
 			'priority'      => 'high',
 			'show_names'    => true, // Show field names on the left
@@ -168,7 +168,7 @@ class SEDF_Chapter extends CPT_Core {
 // Helper function to get all chapters for big brother list
 function all_chapters( $field ) {
 	$args = array(
-    'post_type'   => 'sedf-chapter'
+    'post_type'   => 'chapters'
   );
 	$posts = get_posts( $args );
 	$post_options = array();
