@@ -18,9 +18,6 @@ Houses custom post types and other custom features.
 1. Upload the entire `/sed-features` directory to the `/wp-content/plugins/` directory.
 2. Activate SED Features through the 'Plugins' menu in WordPress.
 
-== Frequently Asked Questions ==
-
-
 == Screenshots ==
 
 
@@ -28,6 +25,7 @@ Houses custom post types and other custom features.
 
 = 0.1.0 =
 * First release
+* Added CPT: Chapter
 
 == Upgrade Notice ==
 

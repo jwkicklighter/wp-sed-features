@@ -27,3 +27,4 @@ Houses custom post types and other custom features.
 
 ### 0.1.0 ###
 * First release
+* Added CPT: Chapter
