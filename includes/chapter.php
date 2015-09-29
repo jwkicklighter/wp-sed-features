@@ -130,6 +130,7 @@ class SEDF_Chapter extends CPT_Core {
 		$new_column = array(
 			'chapter' => sprintf( __( '%s' ), $this->post_type( 'singular' ) ),
 			'school' => 'School',
+			'charter' => 'Date Chartered',
 		);
 		return array_merge( $new_column, $columns );
 	}
@@ -148,6 +149,16 @@ class SEDF_Chapter extends CPT_Core {
 
 			case 'school':
 				echo get_post_meta( $post_id, 'chapter_school', true );
+				break;
+
+			case 'charter':
+				if (get_post_meta($post_id, 'chapter_charter3', true) != '')
+					$unix_charter = get_post_meta( $post_id, 'chapter_charter3', true );
+				else if (get_post_meta($post_id, 'chapter_charter2', true) != '')
+					$unix_charter = get_post_meta( $post_id, 'chapter_charter2', true );
+				else
+					$unix_charter = get_post_meta( $post_id, 'chapter_charter1', true );
+				echo date( 'M d, Y', $unix_charter );
 				break;
 		}
 	}
