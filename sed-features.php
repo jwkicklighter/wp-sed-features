@@ -144,6 +144,7 @@ class SED_Features {
 	public function plugin_classes() {
 		// Attach other plugin classes to the base plugin class.
 		// $this->admin = new SEDF_Admin( $this );
+		$this->cpt_chapter = new SEDF_Chapter( $this );
 	}
 
 	/**
