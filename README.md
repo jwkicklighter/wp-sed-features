@@ -1,9 +1,9 @@
 # SED Features #
 **Contributors:**      Jordan Kicklighter  
 **Tags:**  
-**Requires at least:** 4.3
-**Tested up to:**      4.3
-**Stable tag:**        0.1.0
+**Requires at least:** 4.3  
+**Tested up to:**      4.3  
+**Stable tag:**        0.1.0  
 **License:**           Copyright 2015 Jordan Kicklighter  
 
 ## Description ##
