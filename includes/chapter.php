@@ -33,7 +33,7 @@ class SEDF_Chapter extends CPT_Core {
 		// First parameter should be an array with Singular, Plural, and Registered name
 		parent::__construct(
 			array( __( 'Chapter', 'sed-features' ), __( 'Chapters', 'sed-features' ), 'sedf-chapter' ),
-			array( 'supports' => array( 'title', 'editor', 'excerpt', 'thumbnail' ), )
+			array( 'supports' => array(null), )
 		);
 	}
 
